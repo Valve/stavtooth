@@ -1,0 +1,16 @@
+common: &common
+  adapter: postgresql
+  host: localhost
+  encoding: unicode
+  password:
+  pool: 5
+  timeout: 5000
+  min_messages: warning
+
+development:
+  <<: *common
+  database: stavtooth_development
+
+production:
+  pool: 20
+  database: stavtooth
