@@ -8,6 +8,7 @@ class CreatePatients < ActiveRecord::Migration
       t.timestamp :dob
       t.string :email
       t.string :phone
+      t.text :diagnosis
 
       t.timestamps
     end

@@ -1,6 +1,6 @@
 .row
   .col-xs-11.col-offset-1
-    h2 Поиск пациентов
+    h3 Поиск пациентов
     form role="form"
       .row
         .col-xs-12
@@ -8,3 +8,5 @@
             input#search.form-control type="search" name="search" placeholder="поиск по имени, телефону или email"
             .input-group-btn
               button.btn.btn-info type="submit" Поиск
+      br
+      = link_to 'Добавить нового пациента', new_patient_path, class: 'btn btn-success'

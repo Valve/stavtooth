@@ -1,1 +1,12 @@
-Diagnoses
+.row
+  .col-xs-11.col-offset-1
+    h3 Поиск диагнозов
+    form role="form"
+      .row
+        .col-xs-12
+          .input-group
+            input#search.form-control type="search" name="search" placeholder="поиск по названию или описанию"
+            .input-group-btn
+              button.btn.btn-info type="submit" Поиск
+      br
+      = link_to 'Добавить новый диагноз', new_diagnosis_path, class: 'btn btn-success'

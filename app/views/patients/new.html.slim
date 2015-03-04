@@ -1,0 +1,32 @@
+.container
+  .row
+    h3 Добавление нового пациента
+    = form_for @patient do |f|
+      .form-group
+        = f.label :last_name
+        = f.text_field :last_name, class: 'form-control'
+      .form-group
+        = f.label :first_name
+        = f.text_field :first_name, class: 'form-control'
+      .form-group
+        = f.label :patronymic
+        = f.text_field :patronymic, class: 'form-control'
+      .form-group
+        = f.label :dob
+        = f.text_field :dob, class: 'form-control'
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: 'form-control'
+      .form-group
+        = f.label :phone
+        = f.text_field :phone, class: 'form-control'
+      .form-group
+          label for="diagnosis-template" Выберите диагноз из шаблона:
+            &nbsp;
+          = select_tag 'diagnosis-template' 
+      .form-group
+        = f.label :diagnosis
+        = f.text_area :diagnosis, class: 'form-control', rows: 6
+      .form-group
+        = f.submit('Сохранить', class: 'btn btn-success')
+

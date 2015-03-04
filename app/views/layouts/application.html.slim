@@ -19,9 +19,9 @@ html lang="ru"
           a.navbar-brand href="/"StavTooth
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li.active
+            li class=(controller_name == 'patients' ? 'active' : nil)
               a href="/patients" Пациенты
-            li
+            li class=(controller_name == 'diagnoses' ? 'active' : nil)
               a href="/diagnoses" Диагнозы
     .container
       == yield

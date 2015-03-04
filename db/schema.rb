@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20150302091807) do
     t.datetime "dob"
     t.string   "email"
     t.string   "phone"
+    t.text     "diagnosis"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
