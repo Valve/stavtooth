@@ -5,8 +5,23 @@
       .row
         .col-xs-12
           .input-group
-            input#search.form-control type="search" name="search" placeholder="поиск по названию или описанию"
+            input#search.form-control type="search" name="search" placeholder="поиск по названию или описанию" value=params[:search]
             .input-group-btn
               button.btn.btn-info type="submit" Поиск
-      br
-      = link_to 'Добавить новый диагноз', new_diagnosis_path, class: 'btn btn-success'
+    br
+    table.table.table-bordered.table-hover
+      thead
+        tr
+          th Название диагноза
+          th Действия
+      tbody
+        - @diagnoses.each do |d|
+          tr
+            td= d.name
+            td
+              = link_to 'Редактировать', edit_diagnosis_path(d)
+              ', 
+              = link_to 'Удалить', diagnosis_path(d), data: {method: :delete, confirm: "Вы уверены?"}
+
+
+    = link_to 'Добавить новый диагноз', new_diagnosis_path, class: 'btn btn-success'

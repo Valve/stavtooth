@@ -2,9 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 
+gem 'jquery-rails'
 gem 'kaminari'
 gem 'pg'
 gem 'puma'
+gem 'russian'
 gem 'slim'
 gem 'uglifier', '>= 1.3.0'
 

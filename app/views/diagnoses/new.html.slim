@@ -1,6 +1,7 @@
 .container
   .row
     h3 Добавление нового диагноза
+    = render 'errors', model: @diagnosis
     = form_for @diagnosis do |f|
       .form-group
         = f.label :name

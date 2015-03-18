@@ -1,0 +1,8 @@
+ru:
+  activerecord:
+    models:
+      diagnosis: "Диагноз"
+    attributes:
+      diagnosis:
+        name: "Название"
+        description: "Описание"
