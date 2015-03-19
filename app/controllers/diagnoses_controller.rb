@@ -19,6 +19,19 @@ class DiagnosesController < ApplicationController
     end
   end
 
+  def edit
+    @diagnosis = Diagnosis.find(params[:id])
+  end
+
+  def update
+    @diagnosis = Diagnosis.find(params[:id])
+    if @diagnosis.update(diagnosis_params)
+      redirect_to diagnoses_path, notice: 'Диагноз отредактирован успешно'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     Diagnosis.find_by(id: params[:id]).try(:destroy)
     redirect_to :back
