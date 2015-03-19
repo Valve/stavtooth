@@ -1,8 +1,18 @@
 ru:
   activerecord:
     models:
+      patient: "Пациент"
       diagnosis: "Диагноз"
     attributes:
+      patient:
+        first_name: "Имя"
+        last_name: "Фамилия" 
+        patronymic: "Отчество" 
+        dob: "Дата рождения"
+        email: "Email"
+        phone: "Контактный телефон"
+        address: "Адрес"
+        diagnosis: "Диагноз"
       diagnosis:
         name: "Название"
         description: "Описание"

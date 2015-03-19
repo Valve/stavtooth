@@ -24,22 +24,25 @@ ActiveRecord::Schema.define(version: 20150302091807) do
   add_index "diagnoses", ["name"], name: "index_diagnoses_on_name", unique: true, using: :btree
 
   create_table "patients", force: :cascade do |t|
-    t.integer  "clinic_id"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.integer  "clinic_id",  null: false
+    t.string   "first_name", null: false
+    t.string   "last_name",  null: false
     t.string   "patronymic"
     t.datetime "dob"
     t.string   "email"
     t.string   "phone"
+    t.string   "address"
     t.text     "diagnosis"
+    t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "patients", ["clinic_id"], name: "index_patients_on_clinic_id", using: :btree
-  add_index "patients", ["email"], name: "index_patients_on_email", unique: true, using: :btree
+  add_index "patients", ["deleted_at"], name: "index_patients_on_deleted_at", using: :btree
+  add_index "patients", ["email"], name: "index_patients_on_email", using: :btree
   add_index "patients", ["first_name"], name: "index_patients_on_first_name", using: :btree
   add_index "patients", ["last_name"], name: "index_patients_on_last_name", using: :btree
-  add_index "patients", ["phone"], name: "index_patients_on_phone", unique: true, using: :btree
+  add_index "patients", ["phone"], name: "index_patients_on_phone", using: :btree
 
 end

@@ -5,8 +5,25 @@
       .row
         .col-xs-12
           .input-group
-            input#search.form-control type="search" name="search" placeholder="поиск по имени, телефону или email"
+            input#search.form-control type="search" name="search" placeholder="поиск по имени, телефону или email" value=params[:search]
             .input-group-btn
               button.btn.btn-info type="submit" Поиск
       br
+      table.table.table-bordered.table-hover
+        thead
+          tr
+            th Пациент
+            th Диагноз
+            th
+        tbody
+          - @patients.each do |p|
+            tr
+              td= p.full_name
+              td= p.diagnosis
+              td
+                = link_to 'Редактировать', edit_patient_path(p)
+                ', 
+                = link_to 'Просмотр', patient_path(p)
+                ', 
+                = link_to 'Удалить', patient_path(p), data: {method: :delete, confirm: "Вы уверены?"}
       = link_to 'Добавить нового пациента', new_patient_path, class: 'btn btn-success'

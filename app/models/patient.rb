@@ -1,4 +1,14 @@
 class Patient < ActiveRecord::Base
-  validates :first_name, :last_name, :patronymic, :dob, :email, :phone, presence: true
-  validates :email, :phone, uniqueness: true
+
+  default_scope ->{where(deleted_at: nil)}
+  validates :first_name, :last_name, :patronymic, :dob, :phone, presence: true
+
+  def full_name
+    "#{last_name} #{first_name}"
+  end
+
+  def archive!
+    update_column(:deleted_at, Time.current)
+  end
+
 end
