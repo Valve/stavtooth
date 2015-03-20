@@ -2,6 +2,7 @@ class CreatePatients < ActiveRecord::Migration
   def up
     create_table :patients do |t|
       t.integer :clinic_id, null: false
+      t.integer :doctor_id, null: false
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.string :patronymic

@@ -1,0 +1,27 @@
+.row
+  .col-xs-11.col-offset-1
+    h3 Поиск докторов
+    form role="form"
+      .row
+        .col-xs-12
+          .input-group
+            input#search.form-control type="search" name="search" placeholder="поиск по имени, телефону или email" value=params[:search]
+            .input-group-btn
+              button.btn.btn-info type="submit" Поиск
+      br
+      table.table.table-bordered.table-hover
+        thead
+          tr
+            th Имя
+            th
+        tbody
+          - @doctors.each do |d|
+            tr
+              td= d.full_name
+              td
+                = link_to 'Редактировать', edit_doctor_path(d)
+                ', 
+                = link_to 'Просмотр', doctor_path(d)
+                ', 
+                = link_to 'Удалить', doctor_path(d), data: {method: :delete, confirm: "Вы уверены?"}
+      = link_to 'Добавить нового доктора', new_doctor_path, class: 'btn btn-success'

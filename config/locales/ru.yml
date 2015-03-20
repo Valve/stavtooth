@@ -3,6 +3,7 @@ ru:
     models:
       patient: "Пациент"
       diagnosis: "Диагноз"
+      doctor: "Доктор"
     attributes:
       patient:
         first_name: "Имя"
@@ -13,6 +14,16 @@ ru:
         phone: "Контактный телефон"
         address: "Адрес"
         diagnosis: "Диагноз"
+        doctor_id: "Доктор"
+        doctor: "Доктор"
       diagnosis:
         name: "Название"
         description: "Описание"
+      doctor:
+        first_name: "Имя"
+        last_name: "Фамилия" 
+        patronymic: "Отчество" 
+        dob: "Дата рождения"
+        email: "Email"
+        phone: "Контактный телефон"
+        address: "Адрес"

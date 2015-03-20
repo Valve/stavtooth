@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302091807) do
+ActiveRecord::Schema.define(version: 20150320081050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,29 @@ ActiveRecord::Schema.define(version: 20150302091807) do
 
   add_index "diagnoses", ["name"], name: "index_diagnoses_on_name", unique: true, using: :btree
 
+  create_table "doctors", force: :cascade do |t|
+    t.integer  "clinic_id",  null: false
+    t.string   "first_name", null: false
+    t.string   "last_name",  null: false
+    t.string   "patronymic"
+    t.datetime "dob"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "address"
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "doctors", ["deleted_at"], name: "index_doctors_on_deleted_at", using: :btree
+  add_index "doctors", ["email"], name: "index_doctors_on_email", using: :btree
+  add_index "doctors", ["first_name"], name: "index_doctors_on_first_name", using: :btree
+  add_index "doctors", ["last_name"], name: "index_doctors_on_last_name", using: :btree
+  add_index "doctors", ["phone"], name: "index_doctors_on_phone", using: :btree
+
   create_table "patients", force: :cascade do |t|
     t.integer  "clinic_id",  null: false
+    t.integer  "doctor_id",  null: false
     t.string   "first_name", null: false
     t.string   "last_name",  null: false
     t.string   "patronymic"
