@@ -4,11 +4,12 @@ ru:
       patient: "Пациент"
       diagnosis: "Диагноз"
       doctor: "Доктор"
+      visit: "Обращение"
     attributes:
       patient:
         first_name: "Имя"
-        last_name: "Фамилия" 
-        patronymic: "Отчество" 
+        last_name: "Фамилия"
+        patronymic: "Отчество"
         dob: "Дата рождения"
         email: "Email"
         phone: "Контактный телефон"
@@ -21,9 +22,14 @@ ru:
         description: "Описание"
       doctor:
         first_name: "Имя"
-        last_name: "Фамилия" 
-        patronymic: "Отчество" 
+        last_name: "Фамилия"
+        patronymic: "Отчество"
         dob: "Дата рождения"
         email: "Email"
         phone: "Контактный телефон"
         address: "Адрес"
+      visit:
+        patient_id: "Пациент"
+        doctor_id: "Доктор"
+        doctor: "Доктор"
+        diagnosis: "Диагноз"

@@ -23,6 +23,7 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find(params[:id])
+    @visit = Visit.new 
   end
 
   def edit
@@ -43,7 +44,7 @@ class PatientsController < ApplicationController
     redirect_to :back
   end
 
-  private 
+  private
 
   def patient_params
     params.require(:patient).permit(:first_name, :last_name, :patronymic, :dob, :email, :phone, :address, :diagnosis, :doctor_id)

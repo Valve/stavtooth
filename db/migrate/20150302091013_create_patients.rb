@@ -6,7 +6,7 @@ class CreatePatients < ActiveRecord::Migration
       t.string :first_name, null: false
       t.string :last_name, null: false
       t.string :patronymic
-      t.timestamp :dob
+      t.date :dob
       t.string :email
       t.string :phone
       t.string :address

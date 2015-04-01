@@ -2,7 +2,56 @@
   .row
     h3 Просмотр пациента
 
-    strong Имя:
-    '&nbsp;
-    = @patient.full_name 
+    .section
+      strong> Имя:
+      = @patient.full_name
+    .section
+      strong> Дата рождения:
+      = l(@patient.dob, format: :long)
+    .section
+      strong> Телефон:
+      = @patient.phone
+    .section
+      strong> Email:
+      = @patient.email
+    .section
+      strong> Адрес:
+      = @patient.address
+    .section
+      strong> Диагноз:
+      = @patient.diagnosis
+    .section
+      strong> Доктор
+      = @patient.doctor.full_name
+    .section
+      strong> Дата первого обращения:
+      = l(@patient.created_at, format: :long)
 
+    - if @patient.visits.any?
+      hr
+      h4 Обращения
+      - @patient.visits.order(id: :desc).each do |v|
+        .panel.panel-info
+          .panel-heading
+            span
+              = l(v.created_at, format: :long)
+            span.pull-right
+              = v.doctor.full_name
+          .panel-body
+            = v.diagnosis
+    hr
+    h4 Новое обращение
+    = render 'errors', model: @visit
+    = form_for [@patient, @visit] do |f|
+      .form-group
+        = f.label :doctor_id
+        = f.select :doctor_id, Doctor.all.map{|d| [d.full_name, d.id]}, {include_blank: true}, {class: 'form-control'}
+      .form-group
+          label for="diagnosis-template" Выберите диагноз из шаблона:
+            &nbsp;
+          = select_tag 'diagnosis-template', options_from_collection_for_select(Diagnosis.all, 'description', 'name'), include_blank: true
+      .form-group
+        = f.label :diagnosis
+        = f.text_area :diagnosis, class: 'form-control', rows: 10
+      .form-group
+        = f.submit('Сохранить', class: 'btn btn-success')

@@ -1,5 +1,6 @@
 class Patient < ActiveRecord::Base
   belongs_to :doctor, inverse_of: :patients
+  has_many :visits, inverse_of: :patient
 
   default_scope ->{where(deleted_at: nil)}
   validates :first_name, :last_name, :patronymic, :dob, :phone, :doctor, presence: true

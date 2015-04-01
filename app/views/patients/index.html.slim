@@ -18,12 +18,12 @@
         tbody
           - @patients.each do |p|
             tr
-              td= p.full_name
+              td= link_to p.full_name, patient_path(p)
               td= p.diagnosis
               td
-                = link_to 'Редактировать', edit_patient_path(p)
-                ', 
-                = link_to 'Просмотр', patient_path(p)
-                ', 
-                = link_to 'Удалить', patient_path(p), data: {method: :delete, confirm: "Вы уверены?"}
+                .btn-group.btn-group-m role="group"
+                  a.btn.btn-default href=edit_patient_path(p) title="Редактировать пациента"
+                    = evil_icon 'ei-pencil', size: :sm
+                  a.btn.btn-danger href=patient_path(p) data-method='delete' data-confirm='Вы уверены?'
+                    = evil_icon 'ei-trash', size: :sm
       = link_to 'Добавить нового пациента', new_patient_path, class: 'btn btn-success'
