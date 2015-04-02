@@ -2,13 +2,14 @@ common: &common
   adapter: postgresql
   host: localhost
   encoding: unicode
-  password:
   pool: 5
   timeout: 5000
   min_messages: warning
 
 development:
   <<: *common
+  username: dev
+  password: 1
   database: stavtooth_development
 
 production:

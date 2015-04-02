@@ -21,9 +21,9 @@
               td= link_to p.full_name, patient_path(p)
               td= p.diagnosis
               td
-                .btn-group.btn-group-m role="group"
+                .btn-group.btn-group-xs style="white-space:nowrap" role="group"
                   a.btn.btn-default href=edit_patient_path(p) title="Редактировать пациента"
-                    = evil_icon 'ei-pencil', size: :sm
+                    = evil_icon 'ei-pencil', size: :s
                   a.btn.btn-danger href=patient_path(p) data-method='delete' data-confirm='Вы уверены?'
-                    = evil_icon 'ei-trash', size: :sm
+                    = evil_icon 'ei-trash', size: :s, class: :white
       = link_to 'Добавить нового пациента', new_patient_path, class: 'btn btn-success'

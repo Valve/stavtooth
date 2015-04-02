@@ -27,6 +27,9 @@
       strong> Дата первого обращения:
       = l(@patient.created_at, format: :long)
 
+    br
+    button#print-patient.btn.btn-success.no-print
+      | Печать
     - if @patient.visits.any?
       hr
       h4 Обращения
@@ -40,18 +43,19 @@
           .panel-body
             = v.diagnosis
     hr
-    h4 Новое обращение
-    = render 'errors', model: @visit
-    = form_for [@patient, @visit] do |f|
-      .form-group
-        = f.label :doctor_id
-        = f.select :doctor_id, Doctor.all.map{|d| [d.full_name, d.id]}, {include_blank: true}, {class: 'form-control'}
-      .form-group
-          label for="diagnosis-template" Выберите диагноз из шаблона:
-            &nbsp;
-          = select_tag 'diagnosis-template', options_from_collection_for_select(Diagnosis.all, 'description', 'name'), include_blank: true
-      .form-group
-        = f.label :diagnosis
-        = f.text_area :diagnosis, class: 'form-control', rows: 10
-      .form-group
-        = f.submit('Сохранить', class: 'btn btn-success')
+    .no-print
+      h4 Новое обращение
+      = render 'errors', model: @visit
+      = form_for [@patient, @visit] do |f|
+        .form-group
+          = f.label :doctor_id
+          = f.select :doctor_id, Doctor.all.map{|d| [d.full_name, d.id]}, {include_blank: true}, {class: 'form-control'}
+        .form-group
+            label for="diagnosis-template" Выберите диагноз из шаблона:
+              &nbsp;
+            = select_tag 'diagnosis-template', options_from_collection_for_select(Diagnosis.all, 'description', 'name'), include_blank: true
+        .form-group
+          = f.label :diagnosis
+          = f.text_area :diagnosis, class: 'form-control', rows: 10
+        .form-group
+          = f.submit('Сохранить', class: 'btn btn-success')
