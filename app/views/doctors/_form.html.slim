@@ -1,0 +1,25 @@
+= render 'errors', model: doctor
+= form_for doctor do |f|
+  .form-group
+    = f.label :last_name
+    = f.text_field :last_name, class: 'form-control'
+  .form-group
+    = f.label :first_name
+    = f.text_field :first_name, class: 'form-control'
+  .form-group
+    = f.label :patronymic
+    = f.text_field :patronymic, class: 'form-control'
+  .form-group
+    = f.label :dob
+    = f.text_field :dob, class: 'form-control', placeholder: 'В формате 30.03.1970'
+  .form-group
+    = f.label :email
+    = f.email_field :email, class: 'form-control'
+  .form-group
+    = f.label :phone
+    = f.phone_field :phone, class: 'form-control'
+  .form-group
+    = f.label :address
+    = f.text_field :address, class: 'form-control'
+  .form-group
+    = f.submit('Сохранить', class: 'btn btn-success')
