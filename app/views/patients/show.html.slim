@@ -21,6 +21,9 @@
       strong> Диагноз:
       = @patient.diagnosis
     .section
+      strong> Клиника:
+      = @patient.clinic.name
+    .section
       strong> Доктор
       = @patient.doctor.full_name
     .section

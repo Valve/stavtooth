@@ -12,8 +12,7 @@ class PatientsController < ApplicationController
   end
 
   def create
-    # we don't have clinic entity yet, but we will, so default clinic will be clinic 1
-    @patient = Patient.new(patient_params.merge(clinic_id: 1))
+    @patient = Patient.new(patient_params)
     if @patient.save
       redirect_to patients_path, notice: 'Пациент добавлен успешно'
     else
@@ -47,7 +46,7 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:first_name, :last_name, :patronymic, :dob, :email, :phone, :address, :diagnosis, :doctor_id)
+    params.require(:patient).permit(:first_name, :last_name, :patronymic, :dob, :email, :phone, :address, :diagnosis, :doctor_id, :clinic_id)
   end
 
 end
