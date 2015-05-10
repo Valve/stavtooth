@@ -19,7 +19,7 @@
       = @patient.address
     .section
       strong> Диагноз:
-      = @patient.diagnosis
+      = simple_format(@patient.diagnosis)
     .section
       strong> Клиника:
       = @patient.clinic.name
@@ -44,7 +44,7 @@
             span.pull-right
               = v.doctor.full_name
           .panel-body
-            = v.diagnosis
+            = simple_format(v.diagnosis)
     hr
     .no-print
       h4 Новое обращение

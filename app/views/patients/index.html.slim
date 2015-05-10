@@ -19,7 +19,7 @@
           - @patients.each do |p|
             tr
               td= link_to p.full_name, patient_path(p)
-              td= p.diagnosis
+              td= simple_format(truncate(p.diagnosis, length: 150))
               td
                 .btn-group.btn-group-xs style="white-space:nowrap" role="group"
                   a.btn.btn-default href=edit_patient_path(p) title="Редактировать пациента"
